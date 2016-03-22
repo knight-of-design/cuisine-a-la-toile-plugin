@@ -47,8 +47,7 @@ if ( !function_exists('cuisine_subscriber_gallery_init' ) ) {
             'hierarchical'        => false,
             'public' => true,
             'has_archive' => true,
-            'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
-            'menu_position'       => 3,
+            'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields' ),
             'publicly_queryable' => true,
             'query_var' => true,
             'capability_type' => 'post',
@@ -74,6 +73,7 @@ if ( !function_exists('sweet_plugin_enqueue_assets' ) ) {
  * WIDGETS
  * TODO: REMOVE ANY CODE-DIVA REFERENCES FROM THIS WIDGET EXAMPLE
  * TODO: Replace 'codediva' with 'cusine-a-la-toile'
+ * TODO: MAKE THIS WIDGET OUR OWN (eg replace description etc.)
  */
 
 // Subscriber Gallery Widget
@@ -86,7 +86,7 @@ class CDYearlyArchivesWidget extends WP_Widget {
             'description' => __( 'A yearly archive of your site&#8217;s posts.', 'codediva')
         );
         // Adds a class to the widget and provides a description on the Widget page to describe what the widget does.
-        parent::__construct('yearly_archives', __('Yearly Archives', 'codediva'), $widget_ops);
+        parent::__construct('yearly_archives', __('Cuisine Widget', 'cuisine-a-la-toile'), $widget_ops);
     }
 
 

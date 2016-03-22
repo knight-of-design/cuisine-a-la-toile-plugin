@@ -2,3 +2,8 @@
    TODO: STYLE STUFF
    TODO: COMMENT CODE
 ***************************/
+
+.site-header *:not(img) {
+    /* FOR TESTING ONLY #DELETEME */
+    background-color: pink !important;
+}
