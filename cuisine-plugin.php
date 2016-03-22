@@ -63,8 +63,14 @@ if ( !function_exists('cuisine_subscriber_gallery_init' ) ) {
 // Enqueue Assets such as CSS
 if ( !function_exists('sweet_plugin_enqueue_assets' ) ) {
     function cuisine_plugin_enqueue_assets(){
+<<<<<<< Updated upstream
     global $PLUGIN_DIR;
     wp_enqueue_style( 'cuisine-plugin', $PLUGIN_DIR.'css/style.css' );
+=======
+        global $PLUGIN_DIR;
+        wp_enqueue_style( 'cuisine-plugin', $PLUGIN_DIR.'css/style.css' );
+        wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Muli', false );
+>>>>>>> Stashed changes
     }
 
     add_action( 'wp_enqueue_scripts', 'cuisine_plugin_enqueue_assets' );
@@ -232,19 +238,21 @@ add_action( 'widgets_init', function(){
  * SHORTCODES
  */
 // TODO: UPDATE SHORTCODES
-if ( !function_exists('cuisine_plugin_shortcode__cuisine_box' ) and !shortcode_exists('cuisine-box')) {
-    function cuisine_plugin_shortcode__cuisine_box($options, $content = null){
+if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode_exists('cuisine-timer')) {
+    function cuisine_plugin_shortcode__cuisine_box($options){
         // Copy shortcode options to local variables
         extract( shortcode_atts( array(
-            'text' => 'default',
-            'custom' => 'inherit'
+            'time' => 30,
+            'sound' => 'oohlala',
+            'color' => 'blue',
+            'font' => 'parisienne'
         ), $options) );
 
         // Render shortcode
-        return '<style type="text/css">div.cuisine-box {color:'.$custom.';}</style><div class="cuisine-box text-'.$text.'">'.do_shortcode($content).'</div>';
+        return '<div class="cuisine-timer text-'.$color.' font-'.$font.'">'.$time.'</div>';
     }
 
-    add_shortcode('cuisine-box','cuisine_plugin_shortcode__cuisine_box');
+    add_shortcode('cuisine-timer','cuisine_plugin_shortcode__cuisine_timer');
 }
 
 
