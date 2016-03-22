@@ -96,7 +96,7 @@ class SubscriberGalleryWidget extends WP_Widget {
         //sets a variable for the 'Count' option
         $d = ! empty( $instance['dropdown'] ) ? '1' : '0';
         // sets a variable for the 'Dropdown' option
-        $title = apply_filters('widget_title', empty($instance['title']) ? __('Subscriber Archives', 'cuisine-a-la-toile') : $instance['title'], $instance, $this->id_base);
+        $title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Subscriber Gallery Submissions', 'cuisine-a-la-toile') : $instance['title'], $instance, $this->id_base);
         // Determines whether a title is provided by the user. If this is not provided, the default title is displayed
 
         echo $args['before_widget']; // Appears once the sidebar is registered.
@@ -104,6 +104,53 @@ class SubscriberGalleryWidget extends WP_Widget {
         if ( $title ) {
             echo $args['before_title'] . $title . $args['after_title'];
         }
+
+        // Post Query
+
+        $args = array(
+            'posts_per_page' => 3,
+            'paged' => 1,
+        );
+        $gallery_query = new WP_Query($args);
+
+        if ( $gallery_query->have_posts() ) :
+            // Start the Loop
+            while ($gallery_query->have_posts() ) : $gallery_query->the_post();
+
+                ?>
+                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+                    <?php
+
+
+                    if ( has_post_thumbnail() ){ ?>
+                        <div class="preview">
+                            <a href="<?php echo esc_url( get_permalink() );?>">
+                                <?php the_post_thumbnail(array(400,400));
+                                the_title( '<h1 class="entry-title">', '</h1>' );
+
+                                ?>
+                            </a>
+
+                        </div>
+                    <?php }
+
+                    ?>
+
+                </article><!-- #post-## -->
+                <?php
+
+
+            endwhile;
+
+        else :
+
+            ?>
+            <div>No User Gallery Submissions</div>
+            <?
+
+        endif;
+
 
         if ( $d ) {
             //if the dropdown option is checked, a list of the subcriber gallery posts are displayed by year in a dropdown list.
