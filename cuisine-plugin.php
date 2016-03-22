@@ -8,7 +8,7 @@ Author:      TODO:AUTHORS HERE
 Author URI:  https://knight-of-design.github.io
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: cuisine_a_la_toile
+Text Domain: cuisine-a-la-toile
 Domain Path: /languages
 
 References for Plugin Development:
@@ -17,6 +17,7 @@ https://developer.wordpress.org/plugins/the-basics/best-practices/
 https://codex.wordpress.org/Writing_a_Plugin
 https://developer.wordpress.org/plugins/the-basics/header-requirements/
 https://codex.wordpress.org/I18n_for_WordPress_Developers
+https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/
 */
 
 // TODO: COMMENT CODE
@@ -27,12 +28,21 @@ defined( 'ABSPATH' ) or die( 'Plugin protected from unauthorized access' );
 $PLUGIN_DIR = plugin_dir_url(__FILE__);
 
 // Initialize the plugin
-if ( !function_exists('sweet_plugin_init' ) ) {
-    function sweet_plugin_init(){
-        register_post_type('cuisine_gallery', array(
+if ( !function_exists('cuisine_plugin_init' ) ) {
+    function cuisine_plugin_init(){
+        //TODO: INITIALIZATION LOGIC HERE
+    }
+
+    cuisine_plugin_init();
+}
+
+// Initialize Subscriber Gallery
+if ( !function_exists('cuisine_subscriber_gallery_init' ) ) {
+    function cuisine_subscriber_gallery_init(){
+        register_post_type('cuisine_subscriber_gallery', array(
             'labels' => array(
-                'name' => __( 'Gallery', 'cuisine_a_la_toile' ),
-                'singular_name' => __( 'Gallery', 'cuisine_a_la_toile')
+                'name' => __( 'Subscriber Gallery', 'cuisine-a-la-toile' ),
+                'singular_name' => __( 'Subscriber Gallery', 'cuisine-a-la-toile')
             ),
             'hierarchical'        => false,
             'public' => true,
@@ -42,17 +52,12 @@ if ( !function_exists('sweet_plugin_init' ) ) {
             'publicly_queryable' => true,
             'query_var' => true,
             'capability_type' => 'post',
-            'rewrite' => array('slug' => 'recipe'),
+            'rewrite' => array('slug' => 'subscriber_gallery'),
         ));
     }
-}
 
-// Setup Plugin Translation
-add_action('plugins_loaded', 'wan_load_textdomain');
-function wan_load_textdomain() {
-    load_plugin_textdomain( 'wp-admin-motivation', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+    add_action('init', 'cuisine_subscriber_gallery_init');
 }
-
 
 // Enqueue Assets such as CSS
 if ( !function_exists('sweet_plugin_enqueue_assets' ) ) {
