@@ -16,10 +16,11 @@ https://codex.wordpress.org/Writing_a_Plugin
 https://developer.wordpress.org/plugins/the-basics/header-requirements/
 */
 
-// EXTRA - Prevent PHP code from being executed as standalone file for security reasons
+// TODO: COMMENT CODE
+// EXTRA - for security reasons, prevent PHP code from being executed as standalone file per the recommendation WordPress Codex
 defined( 'ABSPATH' ) or die( 'Plugin protected from unauthorized access' );
 
-// EXTRA - Allow for plugin folder naming flexibility
+// EXTRA - Allow for flexible plugin folder naming
 $PLUGIN_DIR = plugin_dir_url(__FILE__);
 
 // Enqueue Assets such as CSS
