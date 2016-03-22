@@ -63,14 +63,10 @@ if ( !function_exists('cuisine_subscriber_gallery_init' ) ) {
 // Enqueue Assets such as CSS
 if ( !function_exists('sweet_plugin_enqueue_assets' ) ) {
     function cuisine_plugin_enqueue_assets(){
-<<<<<<< Updated upstream
+
     global $PLUGIN_DIR;
     wp_enqueue_style( 'cuisine-plugin', $PLUGIN_DIR.'css/style.css' );
-=======
-        global $PLUGIN_DIR;
-        wp_enqueue_style( 'cuisine-plugin', $PLUGIN_DIR.'css/style.css' );
-        wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Muli', false );
->>>>>>> Stashed changes
+    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Muli', false );
     }
 
     add_action( 'wp_enqueue_scripts', 'cuisine_plugin_enqueue_assets' );
