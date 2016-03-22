@@ -1,1 +1,1 @@
-TODO:Sound files and images go in this directory
+TODO: Sound files and images go in this directory
