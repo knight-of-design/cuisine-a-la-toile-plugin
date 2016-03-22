@@ -243,11 +243,17 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode
             'time' => 30,
             'sound' => 'oohlala',
             'color' => 'blue',
-            'font' => 'parisienne'
+            'font' => 'parisienne',
+            'colorstartbutton' => 'green',
+            'colorpausebutton' => 'red',
+            'colorrestartbutton' => 'yellow'
         ), $options) );
 
         // Render shortcode
-        return '<div class="cuisine-timer text-'.$color.' font-'.$font.'">'.$time.'</div>';
+        $startbutton = '<button type="button" class="start-button"> Start </button>';
+        $pausebutton = '<button type="button" class="pause-button"> Pause </button>';
+        $restartbutton = '<button type="button" class="restart-button"> Restart </button>';
+        return '<div class="cuisine-timer text-'.$color.' font-'.$font.'">'.$time.$startbutton.$pausebutton.$restartbutton.'</div>';
     }
 
     add_shortcode('cuisine-timer','cuisine_plugin_shortcode__cuisine_timer');
