@@ -260,17 +260,17 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode
 }
 
 
-if ( !function_exists('cuisine_plugin_shortcode__cuisine_icon' ) and !shortcode_exists('cuisine-icon')) {
-    function cuisine_plugin_shortcode__cuisine_icon($options){
+if ( !function_exists('cuisine_plugin_shortcode__cuisine_gallery' ) and !shortcode_exists('cuisine-gallery')) {
+    function cuisine_plugin_shortcode__cuisine_gallery($options, $content = null){
         // Copy shortcode options to local variables
         extract( shortcode_atts( array(
             'icon' => '',
         ), $options) );
 
         // Render shortcode
-        return '<i class="cuisine-icon fa fa-'.$icon.'"></i>';
+        return '<div class="cuisine-gallery">'.do_shortcode($content)'</div>';
     }
 
-    add_shortcode('cuisine-icon','cuisine_plugin_shortcode__cuisine_icon');
+    add_shortcode('cuisine-gallery','cuisine_plugin_shortcode__cuisine_gallery');
 }
 ?>
