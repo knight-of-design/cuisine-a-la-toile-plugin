@@ -236,7 +236,7 @@ add_action( 'widgets_init', function(){
  */
 // TODO: UPDATE SHORTCODES
 if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode_exists('cuisine-timer')) {
-    function cuisine_plugin_shortcode__cuisine_box($options){
+    function cuisine_plugin_shortcode__cuisine_timer($options){
         // Copy shortcode options to local variables
         extract( shortcode_atts( array(
             'time' => 30,
