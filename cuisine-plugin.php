@@ -2,9 +2,10 @@
 /*
 Plugin Name: Cuisine a la Toile Plugin
 Plugin URI:  https://github.com/knight-of-design/cuisine-a-la-toile-plugin
-Description: TODO:SHORT DESCRIPTION GOES HERE
+Description: This plugin is a package that contains a shortcode, widget and custom post type
+             The shortcode creates a timer that will allow users to start a timer via javascript
 Version:     1.0
-Author:      TODO:AUTHORS HERE
+Author:      James Knight, Christina Morden, and Nicole Di Carlo
 Author URI:  https://knight-of-design.github.io
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -27,7 +28,7 @@ defined( 'ABSPATH' ) or die( 'Plugin protected from unauthorized access' );
 // Allow for flexible plugin folder naming
 $PLUGIN_DIR = plugin_dir_url(__FILE__);
 
-// Initialize the plugin
+// Initializes the plugin
 if ( !function_exists('cuisine_plugin_init' ) ) {
     function cuisine_plugin_init(){
         //TODO: INITIALIZATION LOGIC HERE
@@ -41,13 +42,13 @@ if ( !function_exists('cuisine_subscriber_gallery_init' ) ) {
     function cuisine_subscriber_gallery_init(){
         register_post_type('cuisine_subscriber_gallery', array(
             'labels' => array(
-                'name' => __( 'Subscriber Gallery', 'cuisine-a-la-toile' ),
-                'singular_name' => __( 'Subscriber Gallery', 'cuisine-a-la-toile')
+            'name' => __( 'Subscriber Gallery', 'cuisine-a-la-toile' ),
+            'singular_name' => __( 'Subscriber Gallery', 'cuisine-a-la-toile')
             ),
-            'hierarchical'        => false,
+            'hierarchical' => false,
             'public' => true,
             'has_archive' => true,
-            'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields' ),
+            'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields' ),
             'publicly_queryable' => true,
             'query_var' => true,
             'capability_type' => 'post',
@@ -62,51 +63,50 @@ if ( !function_exists('cuisine_subscriber_gallery_init' ) ) {
 // Enqueue Assets such as CSS
 if ( !function_exists('sweet_plugin_enqueue_assets' ) ) {
     function cuisine_plugin_enqueue_assets(){
-        global $PLUGIN_DIR;
-        wp_enqueue_style( 'cuisine-plugin', $PLUGIN_DIR.'css/style.css' );
+    global $PLUGIN_DIR;
+    wp_enqueue_style( 'cuisine-plugin', $PLUGIN_DIR.'css/style.css' );
     }
 
     add_action( 'wp_enqueue_scripts', 'cuisine_plugin_enqueue_assets' );
 }
 
 /**
- * WIDGETS
- * TODO: REMOVE ANY CODE-DIVA REFERENCES FROM THIS WIDGET EXAMPLE
- * TODO: Replace 'codediva' with 'cusine-a-la-toile'
- * TODO: MAKE THIS WIDGET OUR OWN (eg replace description etc.)
- */
+ * WIDGET
+ * This widget setup and comments were referenced from Lecture 10 CCT460 Building a WordPress Widget
+ **/
 
 // Subscriber Gallery Widget
-class CDYearlyArchivesWidget extends WP_Widget {
+class SubscriberGalleryWidget extends WP_Widget {
 
-    // Initialize the Widget
+    // Initializes the Widget
     public function __construct() {
         $widget_ops = array(
             'classname' => 'widget_archive',
-            'description' => __( 'A yearly archive of your site&#8217;s posts.', 'codediva')
+            'description' => __( 'A subscriber gallery of recent posts on Cuisine a la toile site&#8217;s.', 'cuisine-a-la-toile')
         );
-        // Adds a class to the widget and provides a description on the Widget page to describe what the widget does.
-        parent::__construct('yearly_archives', __('Cuisine Widget', 'cuisine-a-la-toile'), $widget_ops);
+        // Adds a class to the widget
+        // Provides a description on the Widget page explaining the widget's purpose
+        parent::__construct('subscriber_archives', __('Cuisine Widget', 'cuisine-a-la-toile'), $widget_ops);
     }
 
 
     // Determines what will appear on the site
     public function widget( $args, $instance ) {
         $c = ! empty( $instance['count'] ) ? '1' : '0';
-        //sets a variable for whether or not the 'Count' option is checked
+        //sets a variable for the 'Count' option
         $d = ! empty( $instance['dropdown'] ) ? '1' : '0';
-        // sets a variable for whether or not the 'Dropdown' option is checked
-        $title = apply_filters('widget_title', empty($instance['title']) ? __('Yearly Archives', 'codediva') : $instance['title'], $instance, $this->id_base);
-        // Determines if there's a user-provided title and if not, displays a default title.
+        // sets a variable for the 'Dropdown' option
+        $title = apply_filters('widget_title', empty($instance['title']) ? __('Subscriber Archives', 'cuisine-a-la-toile') : $instance['title'], $instance, $this->id_base);
+        // Determines whether a title is provided by the user. If this is not provided, the default title is displayed
 
-        echo $args['before_widget']; // what's set up when you registered the sidebar
+        echo $args['before_widget']; // Appears once the sidebar is registered.
 
         if ( $title ) {
             echo $args['before_title'] . $title . $args['after_title'];
         }
 
         if ( $d ) {
-            //if the dropdown option is checked, gets a list of the archives and displays them by year in a dropdown list.
+            //if the dropdown option is checked, a list of the subcriber gallery posts are displayed by year in a dropdown list.
             $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
             ?>
             <label class="screen-reader-text" for="<?php echo esc_attr( $dropdown_id ); ?>"><?php echo $title; ?></label>
@@ -115,15 +115,15 @@ class CDYearlyArchivesWidget extends WP_Widget {
                 <?php	$dropdown_args = apply_filters( 'widget_archives_dropdown_args', array(
                     'type'            => 'yearly',
                     'format'          => 'option',
-                    'show_post_count' => $c // If post count checked, show the post count
+                    'show_post_count' => $c // If post count is checked, the post count will be shown.
                 ) );
                 ?>
-                <option value="<?php echo __( 'Select Year', 'codediva' ); ?>"><?php echo __( 'Select Year', 'codediva' ); ?></option>
+                <option value="<?php echo __( 'Select a Year', 'cuisine-a-la-toile' ); ?>"><?php echo __( 'Select a Year', 'cuisine-a-la-toile' ); ?></option>
                 <?php wp_get_archives( $dropdown_args ); ?>
             </select>
             <?php
         } else {
-            // If (d) not selected, show this:
+            // If this option is not selected then this is shown instead:
             ?>
             <ul>
                 <?php
@@ -131,17 +131,17 @@ class CDYearlyArchivesWidget extends WP_Widget {
                     'type'            => 'yearly',
                     'show_post_count' => $c
                 ) ) );
-                // gets a list of the archives and displays them by year. If the Count option is checked, this gets shown.
+                // Gets a list of the posts and displays them by year. If the Count option is checked, this gets shown.
                 ?>
             </ul>
 
             <?php
         }
 
-        echo $args['after_widget']; // what's set up when you registered the sidebar
+        echo $args['after_widget']; // Appears once the sidebar is registered.
     }
 
-    // Sets up the form for users to set their options/add content in the widget admin page
+    // Form Set up. Allows users to customize the widget in the widget admin page.
 
     public function form( $instance ) {
         $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'count' => 0, 'dropdown' => '') );
@@ -150,19 +150,19 @@ class CDYearlyArchivesWidget extends WP_Widget {
         $dropdown = $instance['dropdown'] ? 'checked="checked"' : '';
         ?>
         <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'codediva'); ?></label>
+            <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cuisine-a-la-toile'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
         <p>
             <input class="checkbox" type="checkbox" <?php echo $dropdown; ?> id="<?php echo $this->get_field_id('dropdown'); ?>" name="<?php echo $this->get_field_name('dropdown'); ?>" />
-            <label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e('Display as dropdown', 'codediva'); ?></label>
+            <label for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e('Display as dropdown', 'cuisine-a-la-toile'); ?></label>
             <br/>
             <input class="checkbox" type="checkbox" <?php echo $count; ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" />
-            <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post count', 'codediva'); ?></label>
+            <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post count', 'cuisine-a-la-toile'); ?></label>
         </p>
     <?php }
 
-    // Sanitizes, saves and submits the user-generated content.
+// Sanitizes, saves and submits the content generated by the user.
 
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
@@ -170,15 +170,14 @@ class CDYearlyArchivesWidget extends WP_Widget {
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['count'] = $new_instance['count'] ? 1 : 0;
         $instance['dropdown'] = $new_instance['dropdown'] ? 1 : 0;
-
         return $instance;
     }
 }
 
-// Tells WordPress that this widget has been created and that it should display in the list of available widgets.
+// Informs WordPress that the widget has been created and should be listed along with the rest of the available widgets.
 
 add_action( 'widgets_init', function(){
-    register_widget( 'CDYearlyArchivesWidget' );
+    register_widget( 'SubscriberGalleryWidget' );
 });
 
 /**
