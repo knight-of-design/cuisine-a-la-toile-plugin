@@ -66,7 +66,7 @@ if ( !function_exists('sweet_plugin_enqueue_assets' ) ) {
 
     global $PLUGIN_DIR;
     wp_enqueue_style( 'cuisine-plugin', $PLUGIN_DIR.'css/style.css' );
-    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Muli', false );
+    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Tangerine|Cookie', false );
     }
 
     add_action( 'wp_enqueue_scripts', 'cuisine_plugin_enqueue_assets' );
