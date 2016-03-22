@@ -66,7 +66,7 @@ if ( !function_exists('sweet_plugin_enqueue_assets' ) ) {
 
     global $PLUGIN_DIR;
     wp_enqueue_style( 'cuisine-plugin', $PLUGIN_DIR.'css/style.css' );
-    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Muli', false );
+    wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Tangerine|Cookie', false );
     }
 
     add_action( 'wp_enqueue_scripts', 'cuisine_plugin_enqueue_assets' );
@@ -237,7 +237,7 @@ add_action( 'widgets_init', 'cuisine_register_subscriber_gallery_widget');
  */
 // TODO: UPDATE SHORTCODES
 if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode_exists('cuisine-timer')) {
-    function cuisine_plugin_shortcode__cuisine_box($options){
+    function cuisine_plugin_shortcode__cuisine_timer($options){
         // Copy shortcode options to local variables
         extract( shortcode_atts( array(
             'time' => 30,
