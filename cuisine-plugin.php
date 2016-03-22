@@ -226,10 +226,11 @@ class SubscriberGalleryWidget extends WP_Widget {
 }
 
 // Informs WordPress that the widget has been created and should be listed along with the rest of the available widgets.
-
-add_action( 'widgets_init', function(){
+function cuisine_register_subscriber_gallery_widget(){
     register_widget( 'SubscriberGalleryWidget' );
-});
+}
+
+add_action( 'widgets_init', 'cuisine_register_subscriber_gallery_widget');
 
 /**
  * SHORTCODES
