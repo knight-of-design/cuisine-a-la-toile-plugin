@@ -110,6 +110,7 @@ class SubscriberGalleryWidget extends WP_Widget {
         $args = array(
             'posts_per_page' => 3,
             'paged' => 1,
+            'order' => 'DESC'
         );
         $gallery_query = new WP_Query($args);
 
