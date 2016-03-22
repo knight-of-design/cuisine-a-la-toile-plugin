@@ -8,20 +8,51 @@ Author:      TODO:AUTHORS HERE
 Author URI:  https://knight-of-design.github.io
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: cuisine_a_la_toile
+Domain Path: /languages
 
 References for Plugin Development:
 TODO: ADD ANY REFERENCES TO CODE HERE
 https://developer.wordpress.org/plugins/the-basics/best-practices/
 https://codex.wordpress.org/Writing_a_Plugin
 https://developer.wordpress.org/plugins/the-basics/header-requirements/
+https://codex.wordpress.org/I18n_for_WordPress_Developers
 */
 
 // TODO: COMMENT CODE
-// EXTRA - for security reasons, prevent PHP code from being executed as standalone file per the recommendation WordPress Codex
+// For security reasons, prevent PHP code from being executed as standalone file per the recommendation WordPress Codex
 defined( 'ABSPATH' ) or die( 'Plugin protected from unauthorized access' );
 
-// EXTRA - Allow for flexible plugin folder naming
+// Allow for flexible plugin folder naming
 $PLUGIN_DIR = plugin_dir_url(__FILE__);
+
+// Initialize the plugin
+if ( !function_exists('sweet_plugin_init' ) ) {
+    function sweet_plugin_init(){
+        register_post_type('cuisine_gallery', array(
+            'labels' => array(
+                'name' => __( 'Gallery', 'cuisine_a_la_toile' ),
+                'singular_name' => __( 'Gallery', 'cuisine_a_la_toile')
+            ),
+            'hierarchical'        => false,
+            'public' => true,
+            'has_archive' => true,
+            'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
+            'menu_position'       => 3,
+            'publicly_queryable' => true,
+            'query_var' => true,
+            'capability_type' => 'post',
+            'rewrite' => array('slug' => 'recipe'),
+        ));
+    }
+}
+
+// Setup Plugin Translation
+add_action('plugins_loaded', 'wan_load_textdomain');
+function wan_load_textdomain() {
+    load_plugin_textdomain( 'wp-admin-motivation', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+}
+
 
 // Enqueue Assets such as CSS
 if ( !function_exists('sweet_plugin_enqueue_assets' ) ) {
