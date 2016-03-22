@@ -7,3 +7,57 @@
     /* FOR TESTING ONLY #DELETEME */
     background-color: pink !important;
 }
+
+.cuisine-timer.text-blue {
+  color: HSL(240, 100%, 50%);
+}
+
+.cuisine-timer.text-red {
+  color: HSL(0, 100%, 50%);
+}
+
+.cuisine-timer.text-green {
+  color: HSL(120, 100%, 50%);
+}
+
+.cuisine-timer.text-yellow {
+  color: HSL(60, 100%, 50%);
+}
+
+.cuisine-timer.text-orange {
+  color: HSL(24, 100%, 50%);
+}
+
+.cuisine-timer.text-purple {
+  color: HSL(300, 100%, 50%);
+}
+
+.cuisine-timer.font-parisienne {
+  font-family: 'Parisienne', 'Brush Script MT', cursive;
+}
+
+.cuisine-timer.font-cookie {
+  font-family: 'Cookie', 'Brush Script MT', cursive;
+}
+
+.cuisine-timer.font-tangerine {
+  font-family: 'Tangerine', 'Brush Script MT', cursive;
+}
+
+.cuisine-timer .color-green {
+  background-color: HSL(120, 100%, 50%);
+}
+
+.cuisine-timer .color-red {
+  background-color: HSL(0, 100%, 60%);
+}
+
+.cuisine-timer .color-yellow {
+  background-color: HSL(60, 100%, 50%);
+}
+
+.cuisine-timer button {
+  font-weight: bold;
+  text-shadow: none;
+  border-radius: 50px;
+}

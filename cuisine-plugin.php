@@ -250,9 +250,9 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode
         ), $options) );
 
         // Render shortcode
-        $startbutton = '<button type="button" class="start-button"> Start </button>';
-        $pausebutton = '<button type="button" class="pause-button"> Pause </button>';
-        $restartbutton = '<button type="button" class="restart-button"> Restart </button>';
+        $startbutton = '<button type="button" class="start-button color-'.$colorstartbutton.'"> Start </button>';
+        $pausebutton = '<button type="button" class="pause-button color-'.$colorpausebutton.'"> Pause </button>';
+        $restartbutton = '<button type="button" class="restart-button color-'.$colorrestartbutton.'"> Restart </button>';
         return '<div class="cuisine-timer text-'.$color.' font-'.$font.'">'.$time.$startbutton.$pausebutton.$restartbutton.'</div>';
     }
 
@@ -268,7 +268,7 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_gallery' ) and !shortco
         ), $options) );
 
         // Render shortcode
-        return '<div class="cuisine-gallery">'.do_shortcode($content)'</div>';
+        return '<div class="cuisine-gallery">'.do_shortcode($content).'</div>';
     }
 
     add_shortcode('cuisine-gallery','cuisine_plugin_shortcode__cuisine_gallery');
