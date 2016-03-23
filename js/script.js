@@ -4,6 +4,7 @@
 
 jQuery(function($){
 
+/* Function that resets the timer */
     function resetTimer($timer){
         var time = "" + $timer.data('time'),
             clock =  $timer.data('flipclock');
@@ -26,7 +27,7 @@ jQuery(function($){
 
     });
 
-
+/* Function to start the clock */
     function startClock(){
         var $timer = $(this).closest('.cuisine-timer'),
             clock = $timer.data('flipclock');
@@ -44,6 +45,7 @@ jQuery(function($){
 
     $(document).on('click', '.start-button', startClock);
 
+/* Function to pause the clock */
     function pauseClock(){
         var clock = $(this).closest('.cuisine-timer').data('flipclock');
         clock.stop();
@@ -58,6 +60,7 @@ jQuery(function($){
 
     $(document).on('click', '.paus-button', startClock);
 
+/* Function to restart the clock */
     function restartClock(){
         var $timer = $(this).closest('.cuisine-timer');
         resetTimer($timer);
