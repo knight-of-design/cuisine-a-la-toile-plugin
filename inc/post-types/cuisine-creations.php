@@ -1,5 +1,6 @@
 <?php
 //Register Custom Taxonomy
+//Referenced from https://codex.wordpress.org/Function_Reference/register_taxonomy
 if ( !function_exists('cuisine_register_creations_taxonomy' ) ) {
 function cuisine_register_creations_taxonomy(){
 register_taxonomy(
