@@ -22,11 +22,10 @@ TODO:INSTALLATION INSTRUCTIONS
 Subscriber gallery. If they specify a recipe link, then we will show a button that will allow the user to see the recipe
 
 =Widget=
-Allows the viewer to see that post
-and filter
-First and Last post
-descending and ascending
-page number
+Allows user to select number of posts to be displayed:
+1-6 posts
+Allows user to select ordering of posts to be displayed:
+ascending or descending
 
 = Shortcodes =
 Timer - self enclosing
@@ -35,8 +34,8 @@ Supported colors: red, orange, yellow, green, blue, purple
    Parameters -
     time => hh:mm:ss
     sound => "oohlala", "mmm", "ooo" - Accessed from http://www.freesfx.co.uk
-    color => Supported colors
-    font=> "parsienne, tangerine, cookie" -Accessed through Google Fonts
-    colorstartbutton => Supported colors
-    colorpausebutton => Supported colors
-    colorrestartbutton => Supported colors 
+    color => Supported colors (see list above)
+    font=> "parsienne", "tangerine", "cookie" (Accessed through Google Fonts)
+    colorstartbutton => Supported colors (see list above)
+    colorpausebutton => Supported colors (see list above)
+    colorrestartbutton => Supported colors (see list above)
