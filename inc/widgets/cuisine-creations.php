@@ -22,10 +22,10 @@ class SubscriberGalleryWidget extends WP_Widget
     // Determines what will appear on the site
     public function widget($args, $instance)
     {
-        $c = !empty($instance['count']) ? '1' : '0';
-        //sets a variable for the 'Count' option
-        $d = !empty($instance['dropdown']) ? '1' : '0';
-        // sets a variable for the 'Dropdown' option
+        $c = !empty($instance['cuisine-widget-order']) ? '1' : '0';
+        //sets a variable for the 'cuisine-widget-order' option
+        $d = !empty($instance['cuisine-widget-number']) ? '1' : '0';
+        // sets a variable for the 'cuisine-widget-number' option
         $title = apply_filters('widget_title', empty($instance['title']) ? __('Community Creations', 'cuisine-a-la-toile') : $instance['title'], $instance, $this->id_base);
         // Determines whether a title is provided by the user. If this is not provided, the default title is displayed
 
@@ -39,7 +39,6 @@ class SubscriberGalleryWidget extends WP_Widget
         echo cuisine_render_creations();
 
         if ($d) {
-            //if the dropdown option is checked, a list of the subcriber creations posts are displayed by year in a dropdown list.
             $number_dropdown_id = "widget-{$this->id_base}-cuisine-number-dropdown-{$this->number}";
             ?>
             <label class="screen-reader-text" for="<?= esc_attr($number_dropdown_id) ?>"><?= $title ?></label>
@@ -93,10 +92,10 @@ class SubscriberGalleryWidget extends WP_Widget
     // Backend Form
     public function form($instance)
     {
-        $instance = wp_parse_args((array)$instance, array('title' => '', 'count' => 0, 'dropdown' => ''));
+        $instance = wp_parse_args((array)$instance, array('title' => '', 'cuisine-widget-order' => 0, 'cuisine-widget-number' => ''));
         $title = strip_tags($instance['title']);
-        $count = $instance['count'] ? 'checked="checked"' : '';
-        $dropdown = $instance['dropdown'] ? 'checked="checked"' : '';
+        $count = $instance['cuisine-widget-order'] ? 'checked="checked"' : '';
+        $dropdown = $instance['cuisine-widget-number'] ? 'checked="checked"' : '';
         ?>
         <p>
             <label
@@ -107,16 +106,16 @@ class SubscriberGalleryWidget extends WP_Widget
         </p>
         <p>
             <input class="checkbox" type="checkbox" <?php echo $dropdown; ?>
-                   id="<?php echo $this->get_field_id('dropdown'); ?>"
-                   name="<?php echo $this->get_field_name('dropdown'); ?>"/>
+                   id="<?php echo $this->get_field_id('cuisine-widget-number'); ?>"
+                   name="<?php echo $this->get_field_name('cuisine-widget-number'); ?>"/>
             <label
-                for="<?php echo $this->get_field_id('dropdown'); ?>"><?php _e('Display as dropdown', 'cuisine-a-la-toile'); ?></label>
+                for="<?php echo $this->get_field_id('cuisine-widget-number'); ?>"><?php _e('Display the number of posts as dropdown', 'cuisine-a-la-toile'); ?></label>
             <br/>
             <input class="checkbox" type="checkbox" <?php echo $count; ?>
-                   id="<?php echo $this->get_field_id('count'); ?>"
-                   name="<?php echo $this->get_field_name('count'); ?>"/>
-            <label
-                for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post count', 'cuisine-a-la-toile'); ?></label>
+                   id="<?php echo $this->get_field_id('cuisine-widget-order'); ?>"
+                   name="<?php echo $this->get_field_name('cuisine-widget-order'); ?>"/>
+            <label3
+                for="<?php echo $this->get_field_id('cuisine-widget-order'); ?>"><?php _e('Display ascending or descending as a dropdown', 'cuisine-a-la-toile'); ?></label>
         </p>
     <?php }
 
@@ -125,10 +124,10 @@ class SubscriberGalleryWidget extends WP_Widget
     public function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
-        $new_instance = wp_parse_args((array)$new_instance, array('title' => '', 'count' => 0, 'dropdown' => ''));
+        $new_instance = wp_parse_args((array)$new_instance, array('title' => '', 'cuisine-widget-order' => 0, 'cuisine-widget-number' => ''));
         $instance['title'] = strip_tags($new_instance['title']);
-        $instance['count'] = $new_instance['count'] ? 1 : 0;
-        $instance['dropdown'] = $new_instance['dropdown'] ? 1 : 0;
+        $instance['cuisine-widget-order'] = $new_instance['cuisine-widget-order'] ? 1 : 0;
+        $instance['cuisine-widget-number'] = $new_instance['cuisine-widget-number'] ? 1 : 0;
         return $instance;
     }
 }
