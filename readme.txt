@@ -18,7 +18,7 @@ pause and restart buttons.
 
 The other shortcode is not a self enclosing shortcode. It represent a selection of posts from the custom post type. The user 
 can select if the post is either a appetizer, entree, or dessert. The user can also select which chefusername submitted the 
-custom post type. 
+custom post type. The user can select the any number of positive posts.
 
 =Custom Post Type=
 Subscriber gallery. If they specify a recipe link, then we will show a button that will allow the user to see the recipe
@@ -48,4 +48,5 @@ This shortcode represents a selection of posts from the custom post type.
 	Parameters -
 	 mealcourse => "appetizer", "entree", "dessert"
 	 chefusername => "ilovetobake", "savoryalways", "frenchfoodlover"
+	 numposts => any positive number
 All the parameters are optional. 

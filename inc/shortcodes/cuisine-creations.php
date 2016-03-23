@@ -3,7 +3,9 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_creations' ) and !short
     function cuisine_plugin_shortcode__cuisine_creations($options, $content = null){
         // Copy shortcode options to local variables
         $default_options =  array(
-            'numposts' => 3
+            'numposts' => 3,
+            'mealcourse' => '',
+            'chefusername' => ''
         );
 
         $shortcode_options = shortcode_atts($default_options, $options);
