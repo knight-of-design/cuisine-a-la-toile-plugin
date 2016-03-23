@@ -5,18 +5,20 @@ License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Website: https://phoenix.sheridanc.on.ca/~ccit3409/
 
-This plugin adds a custom post type so the user can manage creations. The plugin also has shortcodes that.
-There is also a widget that  creates a timer that will assist users when they are recreating the recipes provided by Cuisine a la toile.
+This plugin adds a custom post type, widget and shortcode for food websites. 
 
 == Description ==
-The plugin is a timer for individual recipe steps. The custom post type will be the recipe which will contain additional metadata such as ingredients, hot or cold meal, cooking utensils and sweet or savory.
+The custom post type allows users to specify: chef name, chef username, recipe link, recipe, and submission date. 
 
-Certain steps in recipes will call for a specific amount of time to complete, for example: “steam broccoli for 10 minutes.” With the widget, the user can interact with the timer prompting actions such as starting, pausing and resetting the time they set. In addition, there will be a sound effect of a French male saying “Ooh La La” when the time set has expired.
+There are two shortcodes. 
+One shortcode is a self enclosing timer that allows users to start, pause, and restart the time. 
+In addition, there will be a sound effect of a French chef in which user can choose him to say either "Ooh la la", "Ooo", 
+or "Mmm" when the set time has expired.  Users can change the color and font of the timer, as well as the color of the start, 
+pause and restart buttons. 
 
-Some recipes steps will not require a timer, so a shortcode will be used to designate which recipe steps should have a timer available for use. This timer ultimately allows the website to engage with users as they go through the process of recreating the recipes provided.
-
-
-TODO:INSTALLATION INSTRUCTIONS
+The other shortcode is not a self enclosing shortcode. It represent a selection of posts from the custom post type. The user 
+can select if the post is either a appetizer, entree, or dessert. The user can also select which chefusername submitted the 
+custom post type. 
 
 =Custom Post Type=
 Subscriber gallery. If they specify a recipe link, then we will show a button that will allow the user to see the recipe
@@ -29,7 +31,7 @@ ascending or descending
 
 = Shortcodes =
 Timer - self enclosing
-This shortcode represents a box of content that can have its text styled.
+This shortcode represents a timer. 
 Supported colors: red, orange, yellow, green, blue, purple
    Parameters -
     time => hh:mm:ss
@@ -39,3 +41,11 @@ Supported colors: red, orange, yellow, green, blue, purple
     colorstartbutton => Supported colors (see list above)
     colorpausebutton => Supported colors (see list above)
     colorrestartbutton => Supported colors (see list above)
+All the parameters are optional. 
+
+Cuisine Creations - not self enclosing 
+This shortcode represents a selection of posts from the custom post type. 
+	Parameters -
+	 mealcourse => "appetizer", "entree", "dessert"
+	 chefusername => "ilovetobake", "savoryalways", "frenchfoodlover"
+All the parameters are optional. 
