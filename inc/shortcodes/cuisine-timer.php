@@ -1,4 +1,4 @@
-<?php
+co<?php
 if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode_exists('cuisine-timer')) {
     function cuisine_plugin_shortcode__cuisine_timer($options){
         $default_options =  array(

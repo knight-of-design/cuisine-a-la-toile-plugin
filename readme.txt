@@ -29,24 +29,14 @@ descending and ascending
 page number
 
 = Shortcodes =
-Timer
-
-TODO:THIS IS TAKEN FROM MY PLUGIN LAB - USE AS A GUIDE
-sweet-box - Non self enclosing
+Timer - self enclosing
 This shortcode represents a box of content that can have its text styled.
+Supported colors: red, orange, yellow, green, blue, purple
    Parameters -
-    time => "30"
+    time => hh:mm:ss
+    sound => "oohlala", "mmm", "ooo" - Accessed from http://www.freesfx.co.uk
+    color => Supported colors
     font=> "parsienne, tangerine, cookie" -Accessed through Google Fonts
-    sound=> "ohlala"
-    color=> "red"
-
-Examples:
-  * [sweet-box text="red"] Text [/sweet-box]
-  * [sweet-box custom="#B0B"] Text [/sweet-box]
-
-sweet-icon - self enclosing
-  Parameters
-  'icon' => 'chrome' - Based on fontawesome. See https://fortawesome.github.io/Font-Awesome/icons/ for the other options
-
-Example:
-  * [sweet-icon icon="chrome" /]
+    colorstartbutton => Supported colors
+    colorpausebutton => Supported colors
+    colorrestartbutton => Supported colors 
