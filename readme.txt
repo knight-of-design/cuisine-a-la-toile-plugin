@@ -24,9 +24,9 @@ custom post type. The user can select the any number of positive posts.
 Subscriber gallery. If they specify a recipe link, then we will show a button that will allow the user to see the recipe
 
 =Widget=
-Allows user to select number of posts to be displayed:
+Allows administrator to select number of posts to be displayed:
 1-6 posts
-Allows user to select ordering of posts to be displayed:
+Allows administrator to select ordering of posts to be displayed:
 ascending or descending
 
 = Shortcodes =
