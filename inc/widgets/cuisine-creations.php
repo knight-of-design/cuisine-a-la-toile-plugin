@@ -40,9 +40,8 @@ class SubscriberGalleryWidget extends WP_Widget {
     $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
     ?>
     <label class="screen-reader-text" for="<?php echo esc_attr( $dropdown_id ); ?>"><?php echo $title; ?></label>
-//Number of Posts
     <select id="<?php echo esc_attr( $dropdown_id ); ?>" name="cuisine-widget-number-of-posts" onchange='document.location.href=this.options[this.selectedIndex].value;'>
-        <option value="<?php echo __( 'Select the number of posts you want to show', 'cuisine-a-la-toile' ); ?>">
+        <option value="<?php echo __( 'Select the number of posts you want to show', 'cuisine-a-la-toile' ); //Number of Posts?>">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -52,13 +51,13 @@ class SubscriberGalleryWidget extends WP_Widget {
         <?php echo __( 'Select the number of posts you want to show', 'cuisine-a-la-toile' ); ?></option>
         <?php wp_get_archives( $dropdown_args ); ?>
     </select>
-  //Ascending to Descending
+
     <select id="<?php echo esc_attr( $dropdown_id ); ?>" name="cuisine-widget-ascending-descending" onchange='document.location.href=this.options[this.selectedIndex].value;'>
         <option value="ascending">Ascending</option>
         <option value="descending">Descending</option>
         <?php echo __( 'Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile' ); ?>">
 
-        <?php echo __( 'Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile' ); ?></option>
+        <?php echo __( 'Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile' ); //Ascending to Descending?></option>
         <?php wp_get_archives( $dropdown_args ); ?>
     </select>
     <?php
