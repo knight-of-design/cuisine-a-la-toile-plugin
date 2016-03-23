@@ -2,6 +2,8 @@
  * Cuisine Timer Countdown Functionality
  */
 
-jQuery(function(){
-    alert('jq')
+jQuery(function($){
+    $('.cuisine-timer').each(function(el){
+        console.log(el);
+    })
 });
