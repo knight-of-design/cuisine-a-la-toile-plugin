@@ -15,7 +15,7 @@ class SubscriberGalleryWidget extends WP_Widget
         );
         // Adds a class to the widget
         // Provides a description on the Widget page explaining the widget's purpose
-        parent::__construct('community_archives', __('Cuisine Widget', 'cuisine-a-la-toile'), $widget_ops);
+        parent::__construct('cuisine_creation_widget', __('Cuisine Widget', 'cuisine-a-la-toile'), $widget_ops);
     }
 
 
