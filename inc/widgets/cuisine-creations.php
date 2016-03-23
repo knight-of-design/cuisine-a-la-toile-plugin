@@ -113,3 +113,4 @@ function cuisine_register_community_creations_widget(){
 }
 
 add_action( 'widgets_init', 'cuisine_register_community_creations_widget');
+?>
