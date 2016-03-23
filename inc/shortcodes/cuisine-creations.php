@@ -13,7 +13,14 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_creations' ) and !short
         $creations_options = array(
             'content' => $content,
             'query' => array(
-                'posts_per_page' => $shortcode_options['numposts']
+                'posts_per_page' => $shortcode_options['numposts'],
+                'tax_query' => array(
+                  array(
+                    'taxonomy' => 'cuisine_creation_meal_course',
+                    'field' => 'slug',
+                    'terms' => $shortcode_options['mealcourse']
+                  )
+                )
             )
         );
         // Render shortcode
