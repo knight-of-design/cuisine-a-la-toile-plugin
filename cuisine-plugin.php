@@ -56,12 +56,18 @@ if (!function_exists('sweet_plugin_enqueue_assets')) {
 
         global $PLUGIN_DIR;
 
-        // Enqueue CSS
+        // Enqueue Plugin CSS
         wp_enqueue_style('cuisine-plugin', $PLUGIN_DIR . 'css/style.css');
+
+        // Enqueue Plugin JS
+        wp_enqueue_script('cuisine-plugin',$PLUGIN_DIR.'js/script.js',array('jquery'), '1.0', true );
+
+        // Enqueue Google Fonts
         wp_enqueue_style('wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Tangerine|Cookie', false);
 
-        // Enqueue JS
-        wp_enqueue_script('cuisine-plugin',$PLUGIN_DIR.'js/script.js',array('jquery'), '1.0', true );
+        // Enqueue FlipClock.js
+        wp_enqueue_style( 'flipclock', $PLUGIN_DIR . 'lib/flipclock/flipclock.css');
+        wp_enqueue_script('flipclock', $PLUGIN_DIR . 'lib/flipclock/flipclock.js', array('jquery'), '1.0', true );
 
     }
 
