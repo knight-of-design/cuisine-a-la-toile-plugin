@@ -1,13 +1,4 @@
-/**************************
-   TODO: STYLE STUFF
-   TODO: COMMENT CODE
-***************************/
-
-.site-header *:not(img) {
-    /* FOR TESTING ONLY #DELETEME */
-    background-color: pink !important;
-}
-
+/*Here are the list of colours that are supported for the timer text*/
 .cuisine-timer.text-blue {
   color: HSL(240, 100%, 50%);
 }
@@ -31,7 +22,7 @@
 .cuisine-timer.text-purple {
   color: HSL(300, 100%, 50%);
 }
-
+/*Fonts available for the timer text*/
 .cuisine-timer.font-parisienne {
   font-family: 'Parisienne', 'Brush Script MT', cursive;
 }
@@ -44,6 +35,7 @@
   font-family: 'Tangerine', 'Brush Script MT', cursive;
 }
 
+/*Here are the list of colours that are supported for the timer button*/
 .cuisine-timer .color-green {
   background-color: HSL(120, 100%, 50%);
 }
@@ -56,12 +48,26 @@
   background-color: HSL(60, 100%, 50%);
 }
 
+.cuisine-timer .color-orange {
+  background-color: HSL(24, 100%, 50%);
+}
+
+.cuisine-timer .color-blue {
+background-color: HSL(240, 100%, 50%);
+}
+
+.cuisine-timer .color-purple{
+background-color: HSL(300, 100%, 50%);
+}
+
+/*Button*/
 .cuisine-timer button {
   font-weight: bold;
   text-shadow: none;
   border-radius: 50px;
 }
 
+/*Flip Clock*/
 .cuisine-timer .flipclock{
   zoom: 0.35;
   -moz-transform: scale(0.35);
