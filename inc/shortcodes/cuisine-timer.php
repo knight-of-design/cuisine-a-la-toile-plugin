@@ -3,7 +3,7 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode
     function cuisine_plugin_shortcode__cuisine_timer($options){
         $default_options =  array(
             'time' => '00:00:30',
-            'sound' => 'oohlala',
+            'sound' => 'mmm',
             'color' => 'blue',
             'font' => 'parisienne',
             'colorstartbutton' => 'green',

@@ -42,6 +42,7 @@ if (!function_exists('cuisine_plugin_init')) {
 
 function cuisine_template_html($template, $options = array())
 {
+    global $PLUGIN_DIR;
     // Inspired by https://kovshenin.com/2013/get_template_part-within-shortcodes/
     ob_start();
     extract($options);
@@ -67,7 +68,7 @@ if (!function_exists('sweet_plugin_enqueue_assets')) {
 
         // Enqueue FlipClock.js
         wp_enqueue_style( 'flipclock', $PLUGIN_DIR . 'lib/flipclock/flipclock.css');
-        wp_enqueue_script('flipclock', $PLUGIN_DIR . 'lib/flipclock/flipclock.js', array('jquery'), '1.0', true );
+        wp_enqueue_script('flipclock', $PLUGIN_DIR . 'lib/flipclock/flipclock.min.js', array('jquery'), '1.0', true );
 
     }
 

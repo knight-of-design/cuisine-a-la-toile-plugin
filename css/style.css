@@ -61,3 +61,14 @@
   text-shadow: none;
   border-radius: 50px;
 }
+
+.cuisine-timer .flipclock{
+  zoom: 0.35;
+  -moz-transform: scale(0.35);
+  max-width: 480px;
+  margin: 20px auto;
+}
+
+.cuisine-timer .flip-clock-label{
+  display:none;
+}
