@@ -80,10 +80,10 @@ background-color: HSL(300, 100%, 50%);
 }
 
 /* Widget */
-.cuisine-widget .widget-title {
+.cuisine-creation-widget .widget-title {
   font-size: 1.5em;
 }
 
-.cuisine-widget .entry-title {
+.cuisine-creation-widget .entry-title {
   font-size: 1em;
 }
