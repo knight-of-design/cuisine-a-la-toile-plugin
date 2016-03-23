@@ -5,7 +5,8 @@ License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Website: https://phoenix.sheridanc.on.ca/~ccit3409/
 
-This plugin creates a timer that will assist users when they are recreating the recipes provided by Cuisine a la toile
+This plugin adds a custom post type so the user can manage creations. The plugin also has shortcodes that.
+There is also a widget that  creates a timer that will assist users when they are recreating the recipes provided by Cuisine a la toile.
 
 == Description ==
 The plugin is a timer for individual recipe steps. The custom post type will be the recipe which will contain additional metadata such as ingredients, hot or cold meal, cooking utensils and sweet or savory.

@@ -33,24 +33,32 @@ class SubscriberGalleryWidget extends WP_Widget {
     }
 
     // Post Query
-
     echo cuisine_render_creations();
-
 
     if ( $d ) {
     //if the dropdown option is checked, a list of the subcriber creations posts are displayed by year in a dropdown list.
     $dropdown_id = "{$this->id_base}-dropdown-{$this->number}";
     ?>
     <label class="screen-reader-text" for="<?php echo esc_attr( $dropdown_id ); ?>"><?php echo $title; ?></label>
-    <select id="<?php echo esc_attr( $dropdown_id ); ?>" name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
+//Number of Posts
+    <select id="<?php echo esc_attr( $dropdown_id ); ?>" name="cuisine-widget-number-of-posts" onchange='document.location.href=this.options[this.selectedIndex].value;'>
+        <option value="<?php echo __( 'Select the number of posts you want to show', 'cuisine-a-la-toile' ); ?>">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <?php echo __( 'Select the number of posts you want to show', 'cuisine-a-la-toile' ); ?></option>
+        <?php wp_get_archives( $dropdown_args ); ?>
+    </select>
+  //Ascending to Descending
+    <select id="<?php echo esc_attr( $dropdown_id ); ?>" name="cuisine-widget-ascending-descending" onchange='document.location.href=this.options[this.selectedIndex].value;'>
+        <option value="ascending">Ascending</option>
+        <option value="descending">Descending</option>
+        <?php echo __( 'Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile' ); ?>">
 
-        <?php	$dropdown_args = apply_filters( 'widget_archives_dropdown_args', array(
-            'type'            => 'yearly',
-            'format'          => 'option',
-            'show_post_count' => $c // If post count is checked, the post count will be shown.
-        ) );
-        ?>
-        <option value="<?php echo __( 'Select a Year', 'cuisine-a-la-toile' ); ?>"><?php echo __( 'Select a Year', 'cuisine-a-la-toile' ); ?></option>
+        <?php echo __( 'Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile' ); ?></option>
         <?php wp_get_archives( $dropdown_args ); ?>
     </select>
     <?php
@@ -75,7 +83,6 @@ class SubscriberGalleryWidget extends WP_Widget {
 
     // Form Set up. Allows users to customize the widget in the widget admin page.
     // Backend Form
-
     public function form( $instance ) {
         $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'count' => 0, 'dropdown' => '') );
         $title = strip_tags($instance['title']);

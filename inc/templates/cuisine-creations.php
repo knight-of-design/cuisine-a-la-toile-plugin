@@ -3,23 +3,16 @@
  * Advanced usage of http://codex.wordpress.org/The_Loop
  */
 
-if (!isset($options)){
-    $options = array();
-}
-
-$args = $options['query'];
-
-if (!isset($args)){
+if (!isset($query)){
     //DEFAULT OPTIONS
-    $args =  array(
+    $query =  array(
         'posts_per_page' => 3,
         'paged' => 1,
         'order' => 'DESC'
     );
 }
 
-
-$gallery_query = new WP_Query($args);
+$gallery_query = new WP_Query($query);
 
 if ( $gallery_query->have_posts() ) :
     // Start the Loop
