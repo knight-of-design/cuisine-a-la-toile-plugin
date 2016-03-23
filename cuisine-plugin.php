@@ -13,7 +13,6 @@
  * Domain Path: /languages
  *
  * References for Plugin Development:
- * TODO: ADD ANY REFERENCES TO CODE HERE
  * https://developer.wordpress.org/plugins/the-basics/best-practices/
  * https://codex.wordpress.org/Writing_a_Plugin
  * https://developer.wordpress.org/plugins/the-basics/header-requirements/
@@ -23,7 +22,6 @@
  * http://programmers.stackexchange.com/questions/151661/is-it-bad-practice-to-use-tag-in-php
  */
 
-// TODO: COMMENT CODE
 // For security reasons, prevent PHP code from being executed as standalone file per the recommendation WordPress Codex
 defined('ABSPATH') or die('Plugin protected from unauthorized access');
 
@@ -34,7 +32,7 @@ $PLUGIN_DIR = plugin_dir_url(__FILE__);
 if (!function_exists('cuisine_plugin_init')) {
     function cuisine_plugin_init()
     {
-        //TODO: INITIALIZATION LOGIC HERE
+      
     }
 
     cuisine_plugin_init();
