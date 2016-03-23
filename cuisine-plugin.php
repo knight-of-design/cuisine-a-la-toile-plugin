@@ -45,7 +45,7 @@ function cuisine_template_html($template, $options = array())
     // Inspired by https://kovshenin.com/2013/get_template_part-within-shortcodes/
     ob_start();
     extract($options);
-    include('templates/' . $template . '.php');
+    include('inc/templates/' . $template . '.php');
     return ob_get_clean();
 }
 
@@ -61,7 +61,7 @@ if (!function_exists('sweet_plugin_enqueue_assets')) {
         wp_enqueue_style('wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Parisienne|Tangerine|Cookie', false);
 
         // Enqueue JS
-        wp_enqueue_script('cuisine-plugin',$PLUGIN_DIR.'js/script.js');
+        wp_enqueue_script('cuisine-plugin',$PLUGIN_DIR.'js/script.js',array('jquery'), '1.0', true );
 
     }
 

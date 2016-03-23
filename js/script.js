@@ -2,4 +2,6 @@
  * Cuisine Timer Countdown Functionality
  */
 
-console.log('CUISINE!!!');
+jQuery(function(){
+    alert('jq')
+});
