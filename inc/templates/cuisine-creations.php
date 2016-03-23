@@ -10,10 +10,11 @@ if (!isset($query)){
 //MERGE DEFAULT OPTIONS
 $query =  array(
     'post_type' =>  'cuisine_creation',
-    'posts_per_page' => $query['posts_per_page'] or  3,
-    'paged' => $query['paged'] or 1,
-    'order' =>  $query['order'] or 'DESC'
+    'posts_per_page' => $query['posts_per_page']? $query['posts_per_page'] : 3,
+    'paged' => $query['paged'] ? $query['paged'] : 1,
+    'order' =>  $query['order'] ? $query['order'] : 'DESC'
 );
+
 
 $gallery_query = new WP_Query($query);
 
