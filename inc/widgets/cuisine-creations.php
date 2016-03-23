@@ -38,52 +38,17 @@ class SubscriberGalleryWidget extends WP_Widget
         // Post Query
         echo cuisine_render_creations();
 
-        if ($d) {
+
+       ?>
+        <button onclick="document.location.href='index.php/creation';">See All Creations</button>
+        <?php
+
+            //if the dropdown option is checked, a list of the subcriber creations posts are displayed by year in a dropdown list.
             $number_dropdown_id = "widget-{$this->id_base}-cuisine-number-dropdown-{$this->number}";
             ?>
             <label class="screen-reader-text" for="<?= esc_attr($number_dropdown_id) ?>"><?= $title ?></label>
-            <select id="<?= esc_attr($number_dropdown_id) ?>" name="cuisine-widget-number"
-                    onchange="document.location.href=this.options[this.selectedIndex].value;">
-                <option
-                    value="<?= __('Select the number of posts you want to show', 'cuisine-a-la-toile'); //Number of Posts ?>">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <?php echo __('Select the number of posts you want to show', 'cuisine-a-la-toile'); ?></option>
-            </select>
 
-            <?php $order_dropdown_id = "widget-{$this->id_base}-cuisine-order-dropdown-{$this->number}"; ?>
-
-            <label class="screen-reader-text" for="<?= esc_attr($order_dropdown_id) ?>"><?= $title ?></label>
-            <select id="<?= esc_attr($order_dropdown_id); ?>" name="cuisine-widget-order"
-                    onchange="document.location.href=this.options[this.selectedIndex].value;">
-                <option value="ascending">Ascending</option>
-                <option value="descending">Descending</option>
-                <?= __('Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile'); ?>
-
-
-                <?= __('Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile'); //Ascending to Descending ?></option>
-
-            </select>
-            <?php
-        } else {
-            // If this option is not selected then this is shown instead:
-            ?>
-            <ul>
-                <?php
-                wp_get_archives(apply_filters('widget_archives_args', array(
-                    'type' => 'yearly',
-                    'show_post_count' => $c
-                )));
-                // Gets a list of the posts and displays them by year. If the Count option is checked, this gets shown.
-                ?>
-            </ul>
-
-            <?php
-        }
+      <?php
 
         echo $args['after_widget']; // Appears once the sidebar is registered.
     }
@@ -92,11 +57,36 @@ class SubscriberGalleryWidget extends WP_Widget
     // Backend Form
     public function form($instance)
     {
-        $instance = wp_parse_args((array)$instance, array('title' => '', 'cuisine-widget-order' => 0, 'cuisine-widget-number' => ''));
+        $instance = wp_parse_args((array)$instance, array('title' => '', 'count' => 0, 'dropdown' => ''));
         $title = strip_tags($instance['title']);
-        $count = $instance['cuisine-widget-order'] ? 'checked="checked"' : '';
-        $dropdown = $instance['cuisine-widget-number'] ? 'checked="checked"' : '';
+        $count = $instance['count'] ? 'checked="checked"' : '';
+        $dropdown = $instance['dropdown'] ? 'checked="checked"' : '';
         ?>
+        <select id="<?= esc_attr($number_dropdown_id) ?>" name="cuisine-widget-number"
+                onchange="document.location.href=this.options[this.selectedIndex].value;">
+            <option value="<?= __('Select the number of posts you want to show', 'cuisine-a-la-toile'); //Number of Posts ?>">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <?php echo __('Select the number of posts you want to show', 'cuisine-a-la-toile'); ?></option>
+        </select>
+
+        <?php $order_dropdown_id = "widget-{$this->id_base}-cuisine-order-dropdown-{$this->number}"; ?>
+
+        <label class="screen-reader-text" for="<?= esc_attr($order_dropdown_id) ?>"><?= $title ?></label>
+        <select id="<?= esc_attr($order_dropdown_id); ?>" name="cuisine-widget-order"
+                onchange="document.location.href=this.options[this.selectedIndex].value;">
+            <option value="ascending">Ascending</option>
+            <option value="descending">Descending</option>
+            <?= __('Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile'); ?>
+
+
+            <?= __('Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile'); //Ascending to Descending ?></option>
+
+        </select>
         <p>
             <label
                 for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cuisine-a-la-toile'); ?></label>
