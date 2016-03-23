@@ -66,7 +66,7 @@ if (!function_exists('sweet_plugin_enqueue_assets')) {
 
         // Enqueue FlipClock.js
         wp_enqueue_style( 'flipclock', $PLUGIN_DIR . 'lib/flipclock/flipclock.css');
-        wp_enqueue_script('flipclock', $PLUGIN_DIR . 'lib/flipclock/flipclock.min.js', array('jquery'), '1.0', true );
+        wp_enqueue_script('flipclock', $PLUGIN_DIR . 'lib/flipclock/flipclock.min.js', array('jquery'), '1.1a', true );
 
     }
 
