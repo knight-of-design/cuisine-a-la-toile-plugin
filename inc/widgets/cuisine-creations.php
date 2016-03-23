@@ -22,91 +22,81 @@ class SubscriberGalleryWidget extends WP_Widget
     // Determines what will appear on the site
     public function widget($args, $instance)
     {
-        $c = !empty($instance['cuisine-widget-order']) ? '1' : '0';
+        $order = !empty($instance['cuisine-widget-order']) ? 'ASC' : 'DESC';
         //sets a variable for the 'cuisine-widget-order' option
-        $d = !empty($instance['cuisine-widget-number']) ? '1' : '0';
+        $number = !empty($instance['cuisine-widget-number']) ? $instance['cuisine-widget-number'] : 3;
         // sets a variable for the 'cuisine-widget-number' option
         $title = apply_filters('widget_title', empty($instance['title']) ? __('Community Creations', 'cuisine-a-la-toile') : $instance['title'], $instance, $this->id_base);
         // Determines whether a title is provided by the user. If this is not provided, the default title is displayed
 
         echo $args['before_widget']; // Appears once the sidebar is registered.
 
-        if ($title) {
-            echo $args['before_title'] . $title . $args['after_title'];
-        }
+        echo $args['before_title'] . $title . $args['after_title'];
 
-        // Post Query
-        echo cuisine_render_creations();
+        $button_id = "widget-cuisine-see-all-{$this->id_base}-{$this->number}";
 
+        $cuisine_creation_options = array(
+            'query' => array(
+                'posts_per_page' => $number,
+                'order' =>  $order
+            )
+        );
+        ?>
+        <label class="screen-reader-text" for="<?= esc_attr($button_id) ?>"><?= $title ?></label>
+        <?= cuisine_render_creations($cuisine_creation_options); ?>
+        <button id="<?= esc_attr($button_id) ?>" onclick="document.location.href='<?=get_post_type_archive_link( 'cuisine_creation' );?>';">See All Creations</button>
 
-       ?>
-        <button onclick="document.location.href='index.php/creation';">See All Creations</button>
-        <?php
-
-            //if the dropdown option is checked, a list of the subcriber creations posts are displayed by year in a dropdown list.
-            $number_dropdown_id = "widget-{$this->id_base}-cuisine-number-dropdown-{$this->number}";
-            ?>
-            <label class="screen-reader-text" for="<?= esc_attr($number_dropdown_id) ?>"><?= $title ?></label>
-
-      <?php
-
-        echo $args['after_widget']; // Appears once the sidebar is registered.
+        <?php echo $args['after_widget']; // Appears once the sidebar is registered.
     }
 
     // Form Set up. Allows users to customize the widget in the widget admin page.
     // Backend Form
     public function form($instance)
     {
-        $instance = wp_parse_args((array)$instance, array('title' => '', 'count' => 0, 'dropdown' => ''));
+        $instance = wp_parse_args((array)$instance, array('title' => '',  'cuisine-widget-number' => 3, 'cuisine-widget-order' => ''));
         $title = strip_tags($instance['title']);
-        $count = $instance['count'] ? 'checked="checked"' : '';
-        $dropdown = $instance['dropdown'] ? 'checked="checked"' : '';
+        $number = $instance['cuisine-widget-number'];
+        $is_ascending =  $instance['cuisine-widget-order'] ? 'checked="checked"' : '';
         ?>
-        <select id="<?= esc_attr($number_dropdown_id) ?>" name="cuisine-widget-number"
-                onchange="document.location.href=this.options[this.selectedIndex].value;">
-            <option value="<?= __('Select the number of posts you want to show', 'cuisine-a-la-toile'); //Number of Posts ?>">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <?php echo __('Select the number of posts you want to show', 'cuisine-a-la-toile'); ?></option>
-        </select>
-
-        <?php $order_dropdown_id = "widget-{$this->id_base}-cuisine-order-dropdown-{$this->number}"; ?>
-
-        <label class="screen-reader-text" for="<?= esc_attr($order_dropdown_id) ?>"><?= $title ?></label>
-        <select id="<?= esc_attr($order_dropdown_id); ?>" name="cuisine-widget-order"
-                onchange="document.location.href=this.options[this.selectedIndex].value;">
-            <option value="ascending">Ascending</option>
-            <option value="descending">Descending</option>
-            <?= __('Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile'); ?>
-
-
-            <?= __('Select whether you want the posts to be displayed in either Ascending or Descending order', 'cuisine-a-la-toile'); //Ascending to Descending ?></option>
-
-        </select>
-        <p>
+        <div class="cuisine-widget-options">
+            <br/>
             <label
                 for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'cuisine-a-la-toile'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
                    name="<?php echo $this->get_field_name('title'); ?>" type="text"
                    value="<?php echo esc_attr($title); ?>"/>
-        </p>
-        <p>
-            <input class="checkbox" type="checkbox" <?php echo $dropdown; ?>
-                   id="<?php echo $this->get_field_id('cuisine-widget-number'); ?>"
-                   name="<?php echo $this->get_field_name('cuisine-widget-number'); ?>"/>
-            <label
-                for="<?php echo $this->get_field_id('cuisine-widget-number'); ?>"><?php _e('Display the number of posts as dropdown', 'cuisine-a-la-toile'); ?></label>
             <br/>
-            <input class="checkbox" type="checkbox" <?php echo $count; ?>
-                   id="<?php echo $this->get_field_id('cuisine-widget-order'); ?>"
-                   name="<?php echo $this->get_field_name('cuisine-widget-order'); ?>"/>
-            <label3
-                for="<?php echo $this->get_field_id('cuisine-widget-order'); ?>"><?php _e('Display ascending or descending as a dropdown', 'cuisine-a-la-toile'); ?></label>
-        </p>
+            <br/>
+
+            <label
+                for="<?= $this->get_field_id('cuisine-widget-order'); ?>">
+                <?=__('Number of Creations Shown:', 'cuisine-a-la-toile'); ?>
+            </label>
+            <select id="<?=esc_attr($this->get_field_id('cuisine-widget-number'))?>"
+                    name="<?=esc_attr($this->get_field_name('cuisine-widget-number'))?>">
+
+                <?php
+                for($i=1; $i<=10; $i++){
+                    $is_selected = (($i==$number)?'selected="selected"':'');
+                    ?>
+                     <option value="<?=$i?>" <?=$is_selected?>><?=$i?></option>
+                    <?php
+                }
+                ?>
+            </select>
+         <br/>
+            <br/>
+            <input class="checkbox" type="checkbox" <?=$is_ascending?>
+                   id="<?= $this->get_field_id('cuisine-widget-order'); ?>"
+                   name="<?= $this->get_field_name('cuisine-widget-order'); ?>"/>
+            <label
+                for="<?= $this->get_field_id('cuisine-widget-order'); ?>"><?php _e('Display Oldest Creations First', 'cuisine-a-la-toile'); ?></label>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+
     <?php }
 
     // Saves and submits the content generated by the user.
@@ -114,10 +104,10 @@ class SubscriberGalleryWidget extends WP_Widget
     public function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
-        $new_instance = wp_parse_args((array)$new_instance, array('title' => '', 'cuisine-widget-order' => 0, 'cuisine-widget-number' => ''));
+        $new_instance = wp_parse_args((array)$new_instance, array('title' => '', 'cuisine-widget-order' => 0, 'cuisine-widget-number' => 3));
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['cuisine-widget-order'] = $new_instance['cuisine-widget-order'] ? 1 : 0;
-        $instance['cuisine-widget-number'] = $new_instance['cuisine-widget-number'] ? 1 : 0;
+        $instance['cuisine-widget-number'] = $new_instance['cuisine-widget-number'];
         return $instance;
     }
 }

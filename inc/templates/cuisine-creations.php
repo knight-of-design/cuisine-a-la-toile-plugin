@@ -4,13 +4,16 @@
  */
 
 if (!isset($query)){
-    //DEFAULT OPTIONS
-    $query =  array(
-        'posts_per_page' => 3,
-        'paged' => 1,
-        'order' => 'DESC'
-    );
+    $query = array();
 }
+
+//MERGE DEFAULT OPTIONS
+$query =  array(
+    'post_type' =>  'cuisine_creation',
+    'posts_per_page' => $query['posts_per_page'] or  3,
+    'paged' => $query['paged'] or 1,
+    'order' =>  $query['order'] or 'DESC'
+);
 
 $gallery_query = new WP_Query($query);
 
