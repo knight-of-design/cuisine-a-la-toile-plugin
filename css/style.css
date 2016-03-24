@@ -107,3 +107,11 @@ background-color: HSL(300, 100%, 50%);
 	margin: 0 auto;
 	background-color: HSL(45, 30%, 85%);
 }
+
+.cuisine-creation-widget .recipe-name {
+  display: block;
+}
+
+.cuisine-creation-widget .recipe-name .chef-username {
+  font-size: 0.95em;
+}
