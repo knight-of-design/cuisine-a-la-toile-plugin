@@ -13,25 +13,25 @@ if (!function_exists('cuisine_plugin_shortcode__cuisine_creations') and !shortco
         $shortcode_options = shortcode_atts($default_options, $options);
 
         $meta_query = null;
-        if ($shortcode_options['mealcourse']) {
+        if ($shortcode_options['chefusername']) {
             $meta_query = array(
                 'relation' => 'AND',
                 array(
                     'key' => 'Chef Username',
-                    'value' => array('savoryalways'),
+                    'value' => array($shortcode_options['chefusername']),
                     'compare' => 'IN',
                 )
             );
         }
 
         $tax_query = null;
-        if ($shortcode_options['chefusername']) {
+        if ($shortcode_options['mealcourse']) {
             $tax_query = array(
                 'relation' => 'AND',
                 array(
                     'taxonomy' => 'cuisine_creation_meal_course',
                     'field' => 'slug',
-                    'terms' => 'entree',//$shortcode_options['mealcourse']
+                    'terms' => $shortcode_options['mealcourse']
                 )
             );
         }
