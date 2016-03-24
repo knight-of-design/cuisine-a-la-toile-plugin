@@ -114,7 +114,7 @@
 @media screen and (max-width: 500px) {
 .recipe-name {
   display:block;
-} 
+}
 }
 
 .creation-link {
@@ -145,4 +145,5 @@
 .cuisine-creations .content {
 max-width: 400px;
 font-weight: bold;
+margin: 0 auto;
 }
