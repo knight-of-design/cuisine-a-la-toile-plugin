@@ -47,6 +47,6 @@ Cuisine Creations - not self enclosing
 This shortcode represents a selection of posts from the custom post type. 
 	Parameters -
 	 mealcourse => "appetizer", "entree", "dessert"
-	 chefusername => "ilovetobake", "savoryalways", "frenchfoodlover"
+	 chefusername => "ilovetobake", "savoryalways" or "frenchfoodlover" (Chef Username Custom Field of the Creation CPT)
 	 numposts => any positive number
 All the parameters are optional. 
