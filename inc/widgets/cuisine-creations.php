@@ -11,7 +11,7 @@ class SubscriberGalleryWidget extends WP_Widget
     {
         $widget_ops = array(
             'classname' => 'cuisine-creation-widget',
-            'description' => __('A community creations of recent posts on Cuisine a la toile site&#8217;s.', 'cuisine-a-la-toile')
+            'description' => __('A listing of the Creations Custom Post Type', 'cuisine-a-la-toile')
         );
         // Adds a class to the widget
         // Provides a description on the Widget page explaining the widget's purpose
