@@ -56,7 +56,7 @@ if ( $gallery_query->have_posts() ) :
 
             <a href="<?php echo esc_url( get_permalink() );?>">
                 <?php
-                the_title( '<h1 class="entry-title">', '</h1>' );
+                the_title( '<h1 class="entry-title cuisine-hidden">', '</h1>' );
 
                 ?>
                     <span class="recipe-name">
