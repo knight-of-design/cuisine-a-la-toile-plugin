@@ -35,7 +35,7 @@ Timer - self enclosing
 This shortcode represents a timer.
 Supported colors: red, orange, yellow, green, blue, purple
    Parameters -
-    'time' => hh:mm:ss
+    'time' =>'hh:mm:ss'
     'sound' => "oohlala", "mmm", "ooo" - Accessed from http://www.freesfx.co.uk
     'color' => Supported colors (see list above)
     'font'=> "parsienne", "tangerine", "cookie" (Accessed through Google Fonts)
@@ -47,8 +47,8 @@ All the parameters are optional.
 Cuisine Creations - not self enclosing
 This shortcode represents a selection of posts from the custom post type.
 	Parameters -
-	 'mealcourse' => "appetizer", "entree", "dessert"
-	 'chefusername' => "ilovetobake", "savoryalways", "frenchfoodlover"
+	 'mealcourse' => Taxonomy slug (eg. "appetizer", "entree", "dessert")
+	 'chefusername' => Custom Field value of "Chef Username" (eg. "ilovetobake", "savoryalways", "frenchfoodlover")
 	 'numposts' => any positive number
-   'order' =>  'ASC', 'DESC'
+     'order' =>  'ASC' or 'DESC' ('DESC' by default)
 All the parameters are optional.

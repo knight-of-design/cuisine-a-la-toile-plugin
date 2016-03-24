@@ -4,7 +4,7 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_timer' ) and !shortcode
         $default_options =  array(
             'time' => '00:00:30',
             'sound' => 'mmm',
-            'color' => 'blue',
+            'color' => 'white',
             'font' => 'parisienne',
             'colorstartbutton' => 'green',
             'colorpausebutton' => 'red',
