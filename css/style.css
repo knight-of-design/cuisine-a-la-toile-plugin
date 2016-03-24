@@ -84,6 +84,6 @@ background-color: HSL(300, 100%, 50%);
   font-size: 1.5em;
 }
 
-.cuisine-creation-widget .entry-title {
-  font-size: 1em;
+.cuisine-creation-widget .cuisine-hidden {
+  display: none;
 }
