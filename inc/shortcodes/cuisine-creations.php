@@ -3,7 +3,8 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_creations' ) and !short
     function cuisine_plugin_shortcode__cuisine_creations($options, $content = null){
         // Copy shortcode options to local variables
         $default_options =  array(
-            'numposts' => 3,
+            'numposts' => 1,
+            'order' => 'DESC',
             'mealcourse' => '',
             'chefusername' => ''
         );
@@ -14,12 +15,22 @@ if ( !function_exists('cuisine_plugin_shortcode__cuisine_creations' ) and !short
             'content' => $content,
             'query' => array(
                 'posts_per_page' => $shortcode_options['numposts'],
+                'order' => $shortcode_options['order'],
                 'tax_query' => array(
+                    'relation'		=> 'AND',
                   array(
                     'taxonomy' => 'cuisine_creation_meal_course',
                     'field' => 'slug',
                     'terms' => $shortcode_options['mealcourse']
                   )
+                ),
+                'meta_query'	=> array(
+                    'relation'		=> 'AND',
+                    array(
+                        'key'	 	=> 'Chef Username',
+                        'value'	  	=> array('savoryalways'),
+                        'compare' 	=> 'IN',
+                    )
                 )
             )
         );
