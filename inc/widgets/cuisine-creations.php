@@ -44,7 +44,7 @@ class SubscriberGalleryWidget extends WP_Widget
         ?>
         <label class="screen-reader-text" for="<?= esc_attr($button_id) ?>"><?= $title ?></label>
         <?= cuisine_render_creations($cuisine_creation_options); ?>
-        <button id="<?= esc_attr($button_id) ?>" onclick="document.location.href='<?=get_post_type_archive_link( 'cuisine_creation' );?>';">See All Creations</button>
+        <button id="<?= esc_attr($button_id) ?>" onclick="document.location.href='<?=get_post_type_archive_link( 'cuisine_creation' );?>';" class="cuisine-widget-all-btn">See All Creations</button>
 
         <?php echo $args['after_widget']; // Appears once the sidebar is registered.
     }

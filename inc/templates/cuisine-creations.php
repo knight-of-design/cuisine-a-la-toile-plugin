@@ -25,7 +25,6 @@ if (isset($meta_query)){
     $query['meta_query'] = $meta_query;
 }
 
-var_dump($meta_query);
 
 $gallery_query = new WP_Query($query);
 
@@ -54,7 +53,7 @@ if ( $gallery_query->have_posts() ) :
 
             ?>
 
-            <a href="<?php echo esc_url( get_permalink() );?>">
+            <a class="creation-link" href="<?php echo esc_url( get_permalink() );?>">
                 <?php
                 the_title( '<h1 class="entry-title cuisine-hidden">', '</h1>' );
 
