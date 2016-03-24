@@ -4,7 +4,7 @@ if (!function_exists('cuisine_plugin_shortcode__cuisine_creations') and !shortco
     {
         // Copy shortcode options to local variables
         $default_options = array(
-            'numposts' => 1,
+            'numposts' => 3,
             'order' => 'DESC',
             'mealcourse' => '',
             'chefusername' => ''
