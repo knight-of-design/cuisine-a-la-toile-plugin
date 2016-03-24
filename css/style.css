@@ -82,11 +82,12 @@ background-color: HSL(300, 100%, 50%);
 /* Widget */
 .cuisine-widget-all-btn {
   border: 2px solid HSL(0, 100%, 25%);
-  background: HSL(45, 30%, 85%);
+  background-color: HSL(45, 30%, 85%);
   border-radius: 25px;
   color: HSL(210, 100%, 15%);
   line-height: 2;
   font-size: 0.8em;
+  margin: 0 auto;
 }
 
 .cuisine-creation-widget .widget-title {
@@ -95,4 +96,14 @@ background-color: HSL(300, 100%, 50%);
 
 .cuisine-hidden {
   display: none;
+}
+
+.recipe-link {
+  display: block;
+	border: 1px solid HSL(0, 100%, 25%);
+	border-radius: 25px;
+	font-size: 0.8em;
+	box-sizing: border-box;
+	margin: 0 auto;
+	background-color: HSL(45, 30%, 85%);
 }
