@@ -108,6 +108,10 @@ background-color: HSL(300, 100%, 50%);
 	background-color: HSL(45, 30%, 85%);
 }
 
+.creation-link {
+  text-align: center;
+}
+
 .cuisine-creation-widget .recipe-name {
   display: block;
 }
